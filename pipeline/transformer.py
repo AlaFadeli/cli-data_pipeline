@@ -17,6 +17,6 @@ def filter_by(rows, key, value):
     return filtered
 
 
-# Add revenue
-def add_revenue(rows):
-    return [{**r, "revenue": r["quantity"] * r["unit_price"]} for r in rows]
+# Add column
+def add_column(rows, name, func):
+    return [{**r, name: func(r)} for r in rows]
