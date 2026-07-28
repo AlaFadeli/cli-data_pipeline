@@ -1,0 +1,3 @@
+__pycache__/
+data/test_*.json
+data/test_*.csv

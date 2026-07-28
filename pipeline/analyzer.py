@@ -28,3 +28,4 @@ def summary(rows, col):
         "total_units_sold": total_units_sold,
         "avg_units_per_sale": total_units_sold / length if length else 0,
     }
+    return summary
