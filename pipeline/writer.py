@@ -1,4 +1,5 @@
 import csv
+import json
 
 
 # Print clean alligned table of data
@@ -15,6 +16,12 @@ def print_table(rows, max_rows):
 # Transform the edited dict back to csv
 def write_csv(rows, filepath):
     with open(filepath, "w", newline="") as f:
-        csv.DictReader(f, fieldnames=rows[0].keys())
+        writer = csv.DictWriter(f, fieldnames=rows[0].keys())
         writer.writeheader()
         writer.writerows(rows)
+
+
+# Save data as json
+def write_json(rows, filepath):
+    with open(filepath, "w") as f:
+        json.dump(rows, f, indent=2)
