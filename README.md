@@ -2,6 +2,29 @@
 
 A command-line sales data pipeline built to apply Python fundamentals: modules, CSV parsing, generators, decorators, classes, and CLI tooling.
 
+## Download & Setup
+
+```bash
+git clone https://github.com/AlaFadeli/cli-data_pipeline.git
+cd cli-data_pipeline
+python3 main.py data/sample_sales.csv --report
+```
+
+Requires Python 3.7+ (standard library only — no pip install needed).
+
+### Adapt to your own CSV
+
+Edit the config block at the top of `main.py`:
+
+```python
+COMPUTED_COL = "revenue"
+COMPUTED_FUNC = lambda r: r["quantity"] * r["unit_price"]
+ANALYZE_COL = "revenue"
+```
+
+Change `COMPUTED_COL` and `ANALYZE_COL` to match your column names,
+and update `COMPUTED_FUNC` to compute your derived value.
+
 ## Usage
 
 ```bash
