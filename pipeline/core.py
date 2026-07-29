@@ -25,8 +25,8 @@ class Pipeline:
         self.rows = add_column(self.rows, name, func)
         return self
 
-    def report(self, col="revenue"):
-        result = summary(self.rows, col)
+    def report(self, col="revenue", qty_col=None):
+        result = summary(self.rows, col, qty_col)
         print(result)
         return self
 

@@ -15,17 +15,18 @@ def revenue_by(rows, group_key, col):
     return sorted(groups.items(), key=lambda x: x[1], reverse=True)
 
 
-def summary(rows, col):
+def summary(rows, col, qty_col=None):
     length = len(rows)
     total = sum((r[col] for r in rows))
-    total_units_sold = sum((r["quantity"] for r in rows))
     summary = {
         "total_rows": length,
         "total_revenue": total,
         "avg_revenue": total / length if length else 0,
         "max_revenue": max((r[col] for r in rows)),
         "min_revenue": min((r[col] for r in rows)),
-        "total_units_sold": total_units_sold,
-        "avg_units_per_sale": total_units_sold / length if length else 0,
     }
+    if qty_col:
+        total_units = sum((r[qty_col] for r in rows))
+        summary["total_units_sold"] = total_units
+        summary["avg_units_per_sale"] = total_units / length if length else 0
     return summary
