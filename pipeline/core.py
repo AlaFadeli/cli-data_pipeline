@@ -25,13 +25,13 @@ class Pipeline:
         self.rows = add_column(self.rows, name, func)
         return self
 
-    def report(self):
-        result = summary(self.rows, "revenue")
+    def report(self, col="revenue"):
+        result = summary(self.rows, col)
         print(result)
         return self
 
-    def top(self, n):
-        top_rows = sorted(self.rows, key=lambda r: r["revenue"], reverse=True)[:n]
+    def top(self, n, col="revenue"):
+        top_rows = sorted(self.rows, key=lambda r: r[col], reverse=True)[:n]
         print_table(top_rows, n)
         return self
 
